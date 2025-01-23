@@ -47,120 +47,28 @@
   }
 </script>
 
-<style>
-  /* Basic styles for messages */
-  .message {
-    max-width: 75%;
-    padding: 10px 18px;
-    border-radius: 12px;
-    word-wrap: break-word;
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  .user {
-    background-color: #3b82f6;
-    color: white;
-    align-self: flex-end;
-  }
-  .ai {
-    background-color: #e5e7eb;
-    color: black;
-    align-self: flex-start;
-  }
-
-  /* Transition for sliding sidebar and chat */
-  .transition-transform {
-    transition: transform 0.2s ease;
-  }
-
-  /* Header styles */
-  header {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Sidebar Styles */
-  .sidebar {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease;
-    transform: translateX(-100%);
-  }
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  /* Chat Container */
-  .chat-container {
-    padding: 16px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    margin-left: var(--sidebar-width, 0); /* Dynamically adjust margin */
-    transition: margin-left 0.3s ease;
-  }
-
-  .chat-input {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    background-color: #f9fafb;
-    border-top: 1px solid #e5e7eb;
-  }
-
-  /* Input box now takes up remaining width minus the button */
-  .chat-input input {
-    flex-grow: 1;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    width: calc(100% - 80px); /* Takes up the width minus the Send button width */
-  }
-
-  .chat-input button {
-    padding: 8px 16px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .chat-input button:hover {
-    background-color: #2563eb;
-  }
-</style>
-
 <div class="flex flex-col h-screen bg-gray-100">
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-4 shadow-md">
-    <h1 class="text-2xl font-extrabold tracking-wide text-center">AI Chat</h1>
+  <header class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-4 shadow-md flex items-center justify-between px-4">
     <button
-      on:click={toggleSettings}
-      class="absolute top-3 pb-3 left-3 w-10 h-10 bg-white text-blue-500 text-2xl font-bold rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200"
-    >
-      ...
-    </button>
+    on:click={toggleSettings}
+    class="w-10 h-10 bg-white text-blue-500 pb-3 text-2xl font-bold rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200"
+  >
+    ...
+  </button>
+    <h1 class="text-2xl font-extrabold tracking-wide">AI Chat</h1>
+
   </header>
 
   <!-- Sidebar (Settings) -->
-  <div class={`sidebar ${expanded ? 'active' : ''}`}>
+  <div class={`fixed top-20 left-0 w-64 h-full bg-white shadow-lg p-5 transform transition-transform ${expanded ? 'translate-x-0' : '-translate-x-full'}`}>
     <h2 class="text-xl font-bold mb-4">Settings</h2>
     <div class="mb-4">
       <label for="model" class="block text-gray-700 font-medium mb-2">Select Model</label>
       <select
         id="model"
         bind:value={selectedModel}
-        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
       >
         {#each models as model}
           <option value={model}>{model}</option>
@@ -170,12 +78,12 @@
   </div>
 
   <!-- Chat Container -->
-  <div class="chat-container" style="--sidebar-width: {expanded ? '250px' : '0'};">
+  <div class="flex flex-col flex-grow p-4 overflow-y-auto transition-all" style="margin-left: {expanded ? '16rem' : '0'};">
     <!-- Messages -->
     <div class="flex-grow overflow-y-auto space-y-4">
       {#each messages as { role, text }}
         <div class="flex {role === 'user' ? 'justify-end' : 'justify-start'}">
-          <div class="message {role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}">
+          <div class={`max-w-3/4 px-4 py-2 rounded-lg break-words ${role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
             {text}
           </div>
         </div>
@@ -183,14 +91,20 @@
     </div>
 
     <!-- Input Box -->
-    <div class="chat-input">
+    <div class="flex items-center gap-4 bg-gray-50 border-t border-gray-200 p-4">
       <input
         type="text"
         bind:value={inputMessage}
         placeholder="Type a message..."
         on:keypress={(e) => e.key === 'Enter' && sendMessage()}
+        class="flex-grow px-3 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
       />
-      <button on:click={sendMessage}>Send</button>
+      <button
+        on:click={sendMessage}
+        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+      >
+        Send
+      </button>
     </div>
   </div>
 </div>
