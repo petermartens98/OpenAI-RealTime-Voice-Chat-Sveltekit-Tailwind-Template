@@ -13,7 +13,7 @@ To obtain a copy of the project, follow these steps:
 
 1. Open your terminal (or command prompt);
 2. Navigate to the directory where you want to clone the repository;
-3. Run the following command: `git clone https://github.com/davidbuckley96/sveltekit-tailwind-app.git`;
+3. Run the following command: `git clone https://github.com/petermartens98/OpenAI-SvelteKit-Tailwind-Chat-Template.git`;
 4. Navigate into the project directory: `cd sveltekit-tailwind-app`;
 
 ## Install Dependencies
