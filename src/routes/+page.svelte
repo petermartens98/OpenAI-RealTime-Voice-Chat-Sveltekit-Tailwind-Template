@@ -3,6 +3,7 @@
   let inputMessage = "";
   let expanded = false;
   let selectedModel = "gpt-4o-mini"; // Default model
+  let temperature = 0.7; // Default temperature
 
   const models = ["gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini"]; // List of available models
 
@@ -25,6 +26,7 @@
           },
           body: JSON.stringify({
             model: selectedModel, // Use the selected model
+            temperature: temperature, // Pass temperature
             messages: messages.map((msg) => ({
               role: msg.role === "ai" ? "assistant" : msg.role,
               content: msg.text,
@@ -51,13 +53,12 @@
   <!-- Header -->
   <header class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-4 shadow-md flex items-center justify-between px-4">
     <button
-    on:click={toggleSettings}
-    class="w-10 h-10 bg-white text-blue-500 pb-3 text-2xl font-bold rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200"
-  >
-    ...
-  </button>
+      on:click={toggleSettings}
+      class="w-10 h-10 bg-white text-blue-500 pb-3 text-2xl font-bold rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200"
+    >
+      ...
+    </button>
     <h1 class="text-2xl font-extrabold tracking-wide">AI Chat</h1>
-
   </header>
 
   <!-- Sidebar (Settings) -->
@@ -74,6 +75,18 @@
           <option value={model}>{model}</option>
         {/each}
       </select>
+    </div>
+    <div class="mb-4">
+      <label for="temperature" class="block text-gray-700 font-medium mb-2">Temperature ({temperature.toFixed(1)})</label>
+      <input
+        id="temperature"
+        type="range"
+        min="0"
+        max="1"
+        step="0.1"
+        bind:value={temperature}
+        class="w-full"
+      />
     </div>
   </div>
 
