@@ -8,7 +8,7 @@
 ## Getting Started
 
 1. `git clone https://github.com/petermartens98/OpenAI-SvelteKit-Tailwind-Chat-Template.git`
-2. `cd sveltekit-tailwind-app`
+2. `cd OpenAI-SvelteKit-Tailwind-Chat-Template`
 3. `npm install`
 4. create .env file in root, set 'VITE_OPENAI_API_KEY
 5. `npm run dev`
