@@ -1,8 +1,6 @@
-# SvelteKit Tailwind Chat App Template
+# Openai SvelteKit Tailwind Chat App Template
 
 ## Prerequisites
-
-Make sure you have the following software installed on your machine:
 
 - [Node.js](https://nodejs.org/) (version 14 or higher)
 - [npm](https://www.npmjs.com/) (usually comes with Node.js)
