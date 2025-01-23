@@ -1,7 +1,4 @@
-# SvelteKit Tailwind App
-
-This is a SvelteKit project configured with Tailwind CSS. 
-It contains a series of instructions on how to set up and run the project locally on your machine.
+# SvelteKit Tailwind Chat App Template
 
 ## Prerequisites
 
