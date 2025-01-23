@@ -14,4 +14,5 @@
 5. `npm run dev`
 6. In browser, go to: <http://localhost:5173>
 
-## Screenshots
+## UI Screenshot
+
