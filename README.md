@@ -1,4 +1,4 @@
-# Openai SvelteKit Tailwind Chat App Template
+# Realtime Conversation Openai SvelteKit Tailwind Chat App Template
 
 ## Prerequisites
 
@@ -7,7 +7,7 @@
 
 ## Getting Started
 
-1. `git clone https://github.com/petermartens98/OpenAI-SvelteKit-Tailwind-Chat-Template.git`
+1. `git clone https://github.com/petermartens98/OpenAI-RealTime-Conversation-Sveltekit-Tailwind-Template.git`
 2. `cd OpenAI-SvelteKit-Tailwind-Chat-Template`
 3. `npm install`
 4. create .env file in root, set 'VITE_OPENAI_API_KEY
