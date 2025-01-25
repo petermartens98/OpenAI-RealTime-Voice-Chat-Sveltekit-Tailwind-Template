@@ -15,4 +15,4 @@
 6. In browser, go to: <http://localhost:5173>
 
 ## UI Screenshot
-![image](https://github.com/user-attachments/assets/855dabf5-5482-4d7a-b8ba-035d881d587c)
+![image](https://github.com/user-attachments/assets/3ff6edfb-be6d-4bd5-a71c-121b6b5fa0d9)
