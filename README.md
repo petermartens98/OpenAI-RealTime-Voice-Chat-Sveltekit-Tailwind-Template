@@ -1,4 +1,4 @@
-# Realtime Voice Chat Openai SvelteKit Tailwind App Template
+# OpenAI-RealTime-Voice-Chat-Sveltekit-Tailwind-Template
 
 ## Prerequisites
 
