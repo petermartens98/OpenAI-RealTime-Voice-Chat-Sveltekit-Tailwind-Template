@@ -1,4 +1,4 @@
-# Realtime Conversation Openai SvelteKit Tailwind Chat App Template
+# Realtime Conversation Openai SvelteKit Tailwind Voice Chat App Template
 
 ## Prerequisites
 
